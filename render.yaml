@@ -1,22 +1,18 @@
-databases:
-  - name: msme_db
-    databaseName: msme_db
-    user: msme_user
-    plan: free
-
 services:
   - type: web
-    name: msme-backend
+    name: saikona-backend
     runtime: docker
     plan: free
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: msme_db
-          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
         value: "False"
-      - key: PYTHON_VERSION
-        value: "3.12.3" # or whatever they use
+      - key: DATABASE_URL
+        value: ""          # Add your Supabase Postgres URL here (optional)
+      - key: SUPABASE_URL
+        value: "https://lhdwzndntuxqhzwfjthc.supabase.co"
+      - key: SUPABASE_SERVICE_KEY
+        value: ""          # Paste your service_role key here
+      - key: SUPABASE_BUCKET
+        value: "saikona-media"
